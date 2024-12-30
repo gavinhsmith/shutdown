@@ -7,7 +7,7 @@ on:
 jobs:
   deploy-github:
     permissions: write-all
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     environment: Publish
     steps:
       - uses: actions/checkout@v4
