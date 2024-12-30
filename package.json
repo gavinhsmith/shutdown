@@ -26,14 +26,14 @@
     "lint": "eslint ./src",
     "build:module:clean": "rimraf ./dist",
     "build:module:ts": "tsc --project ./config/tsconfig.build.json",
-    "build:module:ts:watch": "tsc --project ./config/tsconfig.build.json --watch",
-    "build:module": "npm-run-all lint:module build:module:clean build:module:ts --print-label",
+    "build:module": "npm-run-all lint:module build:module:clean build:module:ts",
     "build:tests:clean": "rimraf ./tests",
     "build:tests:ts": "tsc --project ./config/tsconfig.test.json",
-    "build:tests:ts:watch": "tsc --project ./config/tsconfig.test.json --watch",
-    "build:tests": "npm-run-all lint:tests build:tests:ts --print-label",
+    "build:tests": "npm-run-all lint:tests build:tests:ts",
     "test": "node ./tests/test.js",
-    "dev:run": "nodemon ./tests/test.js",
-    "dev": "npm-run-all build:module build:tests --parallel build:module:ts:watch build:tests:ts:watch dev:run --print-label"
+    "dev:build:module": "tsc --project ./config/tsconfig.build.json --watch",
+    "dev:build:tests": "tsc --project ./config/tsconfig.test.json --watch",
+    "dev:nodemon": "nodemon ./tests/test.js",
+    "dev": "npm-run-all build:module build:tests --parallel dev:build:module dev:build:tests dev:nodemon --print-label"
   }
 }
