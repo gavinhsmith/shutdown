@@ -6,30 +6,35 @@ on:
 
 jobs:
   publish-github:
+    permissions: write-all
     runs-on: ubuntu-latest
+    environment: Publish
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          registry-url: https://npm.pkg.github.com/
       - run: yarn install
-      - run: yarn build:module --print-label
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: yarn build --print-label
+      - run: yarn test
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: "https://npm.pkg.github.com"
 
   publish-npm:
     permissions: write-all
     runs-on: ubuntu-latest
+    environment: Publish
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          registry-url: https://registry.npmjs.org
       - run: yarn install
-      - run: yarn build:module --print-label
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_KEY}}
+      - run: yarn build --print-label
+      - run: yarn test
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          registry: "https://registry.npmjs.org"
