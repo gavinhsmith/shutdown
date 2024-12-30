@@ -1,3 +1,10 @@
-console.info("This will test the module at a later date.");
+import runAtShutdown, { init } from "@this";
+init({
+  watchedEvents: ["exit"],
+});
 
-process.exit(0);
+runAtShutdown("test", () => {
+  console.info("This would be run at shutdown before we are done...");
+});
+
+console.info("Test exit");
