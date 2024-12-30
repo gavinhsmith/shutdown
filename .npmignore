@@ -132,6 +132,7 @@ out
 /src/
 /tests/
 /config/
+tsconfig.json
 .github/
 eslint.config.mjs
 nodemon.json
