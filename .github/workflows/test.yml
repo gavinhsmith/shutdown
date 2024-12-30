@@ -1,6 +1,9 @@
 name: Build/Test Package 🔧
 
-on: [push]
+on:
+  push:
+    paths:
+      - "**.ts"
 
 jobs:
   check_exists:
