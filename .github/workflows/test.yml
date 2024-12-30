@@ -1,4 +1,4 @@
-name: Build/Test Package
+name: Build/Test Package 🔧
 
 on: [push]
 

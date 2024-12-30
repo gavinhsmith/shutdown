@@ -1,0 +1,23 @@
+name: Deploy to NPM 🚀
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  deploy-npm:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    environment: Publish
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          registry-url: https://registry.npmjs.org
+      - run: yarn install
+      - run: yarn build --print-label
+      - run: yarn test
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
