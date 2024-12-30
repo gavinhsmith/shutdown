@@ -75,8 +75,8 @@ These config options can be used in the `init()` function to modify shutdown.
 | _watchedSignals_ |                                   The signals that shutdown will listen to.                                    | `string[]` | `SIGINT`, `SIGTERM`, `SIGUSR1`, `SIGUSR2` |
 | _watchedEvents_  | The process events that shutdown will listen to. Can't be `exit` or `beforeExit`, these are already processed. | `string[]` |            `uncaughtException`            |
 
-## Building Locally
+## Contributing
 
 Clone the repository, and run `npm i` or `yarn` to install the dependancies and build the module. Run module tests via the `test` script in package.json.
 
-##
+I'll review pull requests in time.
