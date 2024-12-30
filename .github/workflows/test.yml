@@ -1,8 +1,6 @@
 name: Build/Test Package 🔧
 
-on:
-  push:
-    tags-ignore: "v**"
+on: [push]
 
 jobs:
   test:
