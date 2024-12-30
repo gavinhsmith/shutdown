@@ -131,3 +131,7 @@ out
 # Source Files
 /src/
 /tests/
+/config/
+.github/
+eslint.config.mjs
+nodemon.json
