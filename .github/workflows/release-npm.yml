@@ -24,3 +24,5 @@ jobs:
       - run: yarn build --print-label
       - run: yarn test
       - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
