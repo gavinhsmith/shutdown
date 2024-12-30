@@ -1,6 +1,6 @@
 {
   "name": "@gavinhsmith/shutdown",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "A simple shutdown handler for Node.",
   "type": "module",
   "main": "./dist/index.js",
@@ -16,9 +16,6 @@
   "homepage": "https://github.com/gavinhsmith/shutdown#readme",
   "license": "MIT",
   "private": false,
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
     "@types/node": "^22.10.2",
