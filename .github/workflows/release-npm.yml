@@ -20,6 +20,7 @@ jobs:
       - run: yarn install
       - run: yarn build --print-label
       - run: yarn test
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          registry: "https://registry.npmjs.org"
