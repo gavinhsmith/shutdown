@@ -18,10 +18,9 @@ jobs:
         with:
           node-version: lts/*
           registry-url: "https://registry.npmjs.org"
+          token: ${{ secrets.NPM_TOKEN }}
+          always_auth: true
       - run: yarn install
       - run: yarn build --print-label
       - run: yarn test
-      - uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          registry: "https://registry.npmjs.org"
+      - run: yarn publish
