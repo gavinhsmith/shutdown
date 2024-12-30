@@ -19,7 +19,7 @@ jobs:
           node-version: lts/*
           registry-url: "https://registry.npmjs.org"
           token: ${{ secrets.NPM_TOKEN }}
-          always_auth: true
+          always-auth: true
       - run: yarn install
       - run: yarn build --print-label
       - run: yarn test
