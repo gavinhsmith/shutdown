@@ -16,9 +16,6 @@
   "homepage": "https://github.com/gavinhsmith/shutdown#readme",
   "license": "MIT",
   "private": false,
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
     "@types/node": "^22.10.2",
