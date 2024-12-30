@@ -1,10 +1,14 @@
 {
   "name": "@gavinhsmith/shutdown",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "A simple shutdown handler for Node.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "gavinhsmith <me@gavinhsmith.com> (https://gavinhsmith.com)",
   "repository": {
     "type": "git",
@@ -15,7 +19,6 @@
   },
   "homepage": "https://github.com/gavinhsmith/shutdown#readme",
   "license": "MIT",
-  "private": false,
   "devDependencies": {
     "@eslint/js": "^9.17.0",
     "@types/node": "^22.10.2",
