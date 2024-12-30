@@ -1,6 +1,9 @@
 name: Deploy to NPM 🚀
 
 on:
+  push:
+    branches:
+      - "release/**"
   release:
     types: [created]
 

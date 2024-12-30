@@ -1,6 +1,9 @@
 name: Deploy to GitHub 🚀
 
 on:
+  push:
+    branches:
+      - "release/**"
   release:
     types: [created]
 
