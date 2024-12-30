@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.base",
+  "compilerOptions": {
+    "outDir": "../dist",
+    "declaration": true,
+    "sourceMap": true,
+    "sourceRoot": "https://raw.githubusercontent.com/gavinhsmith/shutdown/refs/heads/main/src/module/"
+  },
+  "include": ["../src/module/**/*"]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "shutdown",
+  "version": "1.0.0",
+  "description": "A simple shutdown handler for Node.",
+  "type": "module",
+  "main": "./dist/index.min.js",
+  "types": "./dist/index.d.ts",
+  "repository": "https://github.com/gavinhsmith/shutdown.git",
+  "author": "gavinhsmith <me@gavinhsmith.com> (https://gavinhsmith.com)",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0",
+    "nodemon": "^3.1.9",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.2"
+  },
+  "scripts": {
+    "lint:module": "eslint ./src/module",
+    "lint:tests": "eslint ./src/tests",
+    "lint": "eslint ./src",
+    "build:module:clean": "rimraf ./dist",
+    "build:module:ts": "tsc --project ./config/tsconfig.build.json",
+    "build:module:ts:watch": "tsc --project ./config/tsconfig.build.json --watch",
+    "build:module": "npm-run-all lint:module build:module:clean build:module:ts --print-label",
+    "build:tests:clean": "rimraf ./tests",
+    "build:tests:ts": "tsc --project ./config/tsconfig.test.json",
+    "build:tests:ts:watch": "tsc --project ./config/tsconfig.test.json --watch",
+    "build:tests": "npm-run-all lint:tests build:tests:ts --print-label",
+    "test": "node ./tests/test.js",
+    "dev:run": "nodemon ./tests/test.js",
+    "dev": "npm-run-all build:module build:tests --parallel build:module:ts:watch build:tests:ts:watch dev:run --print-label"
+  }
+}
