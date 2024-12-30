@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   check_exists:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     outputs:
       should_skip: ${{ steps.skip_check.outputs.should_skip }}
     steps:
@@ -14,7 +14,7 @@ jobs:
           skip_after_successful_duplicate: "true"
           concurrent_skipping: "same_content"
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: check_exists
     if: ${{ needs.check_exists.outputs.should_skip != 'true' }}
     steps:

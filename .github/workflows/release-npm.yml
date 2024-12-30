@@ -1,16 +1,13 @@
 name: Deploy to NPM 🚀
 
 on:
-  push:
-    branches:
-      - "release/**"
   release:
     types: [created]
 
 jobs:
   deploy-npm:
     permissions: write-all
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment: Publish
     steps:
       - uses: actions/checkout@v4
