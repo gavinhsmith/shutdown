@@ -14,10 +14,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ vars.NODE_VERSION }}
+          registry-url: "https://npm.pkg.github.com"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          always-auth: true
       - run: yarn install
       - run: yarn build --print-label
       - run: yarn test
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          access: "public"
           registry: "https://npm.pkg.github.com"
