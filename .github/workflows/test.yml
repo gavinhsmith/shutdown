@@ -1,9 +1,9 @@
-name: Build Package
+name: Build/Test Package
 
 on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -11,4 +11,5 @@ jobs:
         with:
           node-version: lts/*
       - run: yarn install
-      - run: yarn run build:module
+      - run: yarn run build
+      - run: yarn run test

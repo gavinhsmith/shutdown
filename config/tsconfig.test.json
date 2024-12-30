@@ -1,7 +1,10 @@
 {
   "extends": "./tsconfig.base",
   "compilerOptions": {
-    "outDir": "../tests"
+    "outDir": "../tests",
+    "paths": {
+      "@this": ["../dist/index.d.ts"]
+    }
   },
   "include": ["../src/tests/**/*"]
 }

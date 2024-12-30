@@ -2,7 +2,8 @@
   "compilerOptions": {
     "strict": true,
     "target": "ES6",
-    "module": "NodeNext"
+    "module": "NodeNext",
+    "removeComments": true
   },
   "exclude": ["../build/**/*", "../dist/**/*"]
 }

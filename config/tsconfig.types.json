@@ -1,7 +1,11 @@
 {
   "extends": "./tsconfig.base",
   "compilerOptions": {
-    "outDir": "../dist",
+    "removeComments": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "../dist",
+    "declarationMap": true,
     "sourceMap": true,
     "sourceRoot": "https://raw.githubusercontent.com/gavinhsmith/shutdown/refs/heads/release/src/module/"
   },
