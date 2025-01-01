@@ -16,7 +16,7 @@ Install `shutdown` via your favorite package manager.
 npm install @gavinhsmith/shutdown
 ```
 
-### [Yarn](https://yarnpkg.com/package?q=%40gavinhsmith&name=%40gavinhsmith%2Fshutdown)
+### [Yarn](https://yarnpkg.com/package?name=%40gavinhsmith%2Fshutdown)
 
 ```shell
 yarn add @gavinhsmith/shutdown
