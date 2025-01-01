@@ -8,7 +8,7 @@ A simple shutdown handler for Node.
 
 ## Install
 
-Install shutdown via your favorite package manager.
+Install `shutdown` via your favorite package manager.
 
 ### [NPM](https://www.npmjs.com/package/@gavinhsmith/shutdown)
 
