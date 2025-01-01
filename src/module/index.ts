@@ -1,3 +1,11 @@
+/**
+ * @module shutdown
+ *
+ * A simple shutdown handler for Node.
+ *
+ * @author gavinhsmith
+ */
+
 // Types / Interfaces
 
 /** A function that will be run on shutdown. */
@@ -119,7 +127,7 @@ export function init(config: ShutdownConfig = {}): void {
  * @param shutdownProcess The function that will be run, must return a promise that resolves on completion.
  * @param requires A list of processes that need to be completed before this one can be run.
  */
-export default function runAtShutdown(
+export function runAtShutdown(
   name: string,
   shutdownProcess: ShutdownProcesser,
   requires: string[] = []
@@ -138,3 +146,7 @@ export default function runAtShutdown(
     }
   });
 }
+
+// Export Default
+
+export default runAtShutdown;
