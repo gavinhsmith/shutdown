@@ -2,21 +2,21 @@
 
 A simple shutdown handler for Node.
 
-![NPM Version](https://img.shields.io/npm/v/%40gavinhsmith%2Fshutdown?style=flat-square&label=NPM%20Version&labelColor=cc3838&color=f0f0f0)
-![NPM Downloads](https://img.shields.io/npm/d18m/%40gavinhsmith%2Fshutdown?style=flat-square&label=NPM%20Downloads&labelColor=cc3838&color=f0f0f0)
-![License](https://img.shields.io/github/license/gavinhsmith/shutdown?style=flat-square&label=Licence&color=f0f0f0)
+[![NPM Version](https://img.shields.io/npm/v/%40gavinhsmith%2Fshutdown?style=flat-square&label=NPM%20Version&labelColor=cc3838&color=f0f0f0)](https://www.npmjs.com/package/@gavinhsmith/shutdown)
+[![NPM Downloads](https://img.shields.io/npm/d18m/%40gavinhsmith%2Fshutdown?style=flat-square&label=NPM%20Downloads&labelColor=cc3838&color=f0f0f0)](https://www.npmjs.com/package/@gavinhsmith/shutdown)
+[![License](https://img.shields.io/github/license/gavinhsmith/shutdown?style=flat-square&label=Licence&color=f0f0f0)](https://github.com/gavinhsmith/shutdown?tab=readme-ov-file#shutdown)
 
 ## Install
 
 Install shutdown via your favorite package manager.
 
-### NPM
+### [NPM](https://www.npmjs.com/package/@gavinhsmith/shutdown)
 
 ```shell
 npm install @gavinhsmith/shutdown
 ```
 
-### Yarn
+### [Yarn](https://yarnpkg.com/package?q=%40gavinhsmith&name=%40gavinhsmith%2Fshutdown)
 
 ```shell
 yarn add @gavinhsmith/shutdown
