@@ -1,6 +1,6 @@
 {
   "name": "@gavinhsmith/shutdown",
-  "version": "1.1.1",
+  "version": "1.1.4",
   "description": "A simple shutdown handler for Node.",
   "author": "gavinhsmith <me@gavinhsmith.com> (https://gavinhsmith.com)",
   "license": "MIT",
