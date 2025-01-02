@@ -79,4 +79,6 @@ These config options can be used in the `init()` function to modify shutdown.
 
 Clone the repository, and run `npm i` or `yarn` to install the dependancies and build the module. Run module tests via the `test` script in package.json.
 
+Workflow tests require [act](https://github.com/nektos/act). You **do not need** this for module development, as workflow tests are not run during CI.
+
 I'll review pull requests in time.
