@@ -9,7 +9,7 @@
 // Types / Interfaces
 
 /** A function that will be run on shutdown. */
-export type ShutdownProcesser = (code: number, name: string) => void;
+export type ShutdownProcesser = (code: number, name: string) => Promise<void>;
 
 /** A shutdown process and its requires. */
 export interface ShutdownProcess {
