@@ -21,27 +21,23 @@ export interface ShutdownProcess {
 /** Config for shutdown. */
 export interface ShutdownConfig {
   /** The exit code that SIGTERM, SIGINT, etc should send when recieved. Defaults to `1`. */
-  signalExitCode?: number;
-  /** Signals to watch for. Defaults to `SIGTERM`, `SIGINT`, `SIGUSR1`, and `SIGUSR2`. */
-  watchedSignals?: NodeJS.Signals[];
-  /** Process events to watch for. Defaults to `uncaughtException`. Can **NOT** be `exit` or `beforeExit` */
-  watchedEvents?: string[];
-}
-
-/** Processed config for shutdown. */
-export interface CleanShutdownConfig extends ShutdownConfig {
   signalExitCode: number;
+  /** Signals to watch for. Defaults to `SIGTERM`, `SIGINT`, `SIGUSR1`, and `SIGUSR2`. */
   watchedSignals: NodeJS.Signals[];
+  /** Process events to watch for. Defaults to `uncaughtException`. Can **NOT** be `exit` or `beforeExit` */
   watchedEvents: string[];
+  /** If shutdown messages should be suppresed. Defaults to `true`. */
+  quiet: boolean;
 }
 
 // Constants
 
 /** The default config for shutdown. */
-const DEFAULT_CONFIG: CleanShutdownConfig = {
+const DEFAULT_CONFIG: ShutdownConfig = {
   signalExitCode: 1,
   watchedSignals: ["SIGINT", "SIGTERM", "SIGUSR1", "SIGUSR2"],
   watchedEvents: ["uncaughtException"],
+  quiet: true,
 };
 
 /** A collection of all known processes. */
@@ -53,16 +49,18 @@ const SHUTDOWN_PROCESSES: ShutdownProcess[] = [];
  * Process shutdown.
  * @param code The exit code.
  */
-async function processShutdown(code: number) {
-  console.info("Shutting down...");
+function processShutdown(quiet: boolean) {
+  return async (code: number) => {
+    if (!quiet) console.info("Shutting down...");
 
-  for (const process of SHUTDOWN_PROCESSES) {
-    console.info(`Running process ${process.name}`);
-    await process.processer(code, process.name);
-  }
+    for (const process of SHUTDOWN_PROCESSES) {
+      if (!quiet) console.info(`Running process ${process.name}`);
+      await process.processer(code, process.name);
+    }
 
-  console.info("Gracefull shutdown complete!");
-  process.exit(code);
+    if (!quiet) console.info("Gracefull shutdown complete!");
+    process.exit(code);
+  };
 }
 
 /**
@@ -70,7 +68,7 @@ async function processShutdown(code: number) {
  * @param config The config to verify.
  * @returns Returns the config.
  */
-function verifyConfig(config: CleanShutdownConfig): CleanShutdownConfig {
+function verifyConfig(config: ShutdownConfig): ShutdownConfig {
   const invalidEvents = ["exit", "beforeExit"];
 
   function containsInvalidEvents(array: string[]): boolean {
@@ -106,19 +104,21 @@ function verifyConfig(config: CleanShutdownConfig): CleanShutdownConfig {
  * Initiate shutdown.
  * @param config Config for shutdown.
  */
-export function init(config: ShutdownConfig = {}): void {
+export function init(config: Partial<ShutdownConfig> = {}): void {
   // Load config
-  const { signalExitCode, watchedSignals, watchedEvents } = verifyConfig({
-    ...DEFAULT_CONFIG,
-    ...config,
-  });
+  const { signalExitCode, watchedSignals, watchedEvents, quiet } = verifyConfig(
+    {
+      ...DEFAULT_CONFIG,
+      ...config,
+    }
+  );
 
   [...watchedSignals, ...watchedEvents].forEach((eventType) => {
     if (eventType != null)
-      process.on(eventType, processShutdown.bind(null, signalExitCode));
+      process.on(eventType, processShutdown(quiet).bind(null, signalExitCode));
   });
 
-  process.on("beforeExit", processShutdown);
+  process.on("beforeExit", processShutdown(quiet));
 }
 
 /**

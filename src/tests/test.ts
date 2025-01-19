@@ -1,10 +1,13 @@
 import runAtShutdown, { init } from "@this";
 init({
-  watchedEvents: ["exit"],
+  quiet: false,
 });
 
 runAtShutdown("test", async () => {
   await new Promise<void>((resolve) => {
-    setTimeout(resolve, 5000);
+    setTimeout(() => {
+      console.info("Test passed.");
+      resolve();
+    }, 5000);
   });
 });

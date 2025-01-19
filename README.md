@@ -74,6 +74,7 @@ These config options can be used in the `init()` function to modify shutdown.
 | _signalExitCode_ |                    The exit code that signal events like `SIGTERM` will throw when invoked.                    |   `int`    |                    `1`                    |
 | _watchedSignals_ |                                   The signals that shutdown will listen to.                                    | `string[]` | `SIGINT`, `SIGTERM`, `SIGUSR1`, `SIGUSR2` |
 | _watchedEvents_  | The process events that shutdown will listen to. Can't be `exit` or `beforeExit`, these are already processed. | `string[]` |            `uncaughtException`            |
+|     _quiet_      |                                   If shutdown messages should be suppresed.                                    | `boolean`  |                  `true`                   |
 
 ## Contributing
 
