@@ -53,12 +53,12 @@ const SHUTDOWN_PROCESSES: ShutdownProcess[] = [];
  * Process shutdown.
  * @param code The exit code.
  */
-function processShutdown(code: number) {
+async function processShutdown(code: number) {
   console.info("Shutting down...");
 
   for (const process of SHUTDOWN_PROCESSES) {
     console.info(`Running process ${process.name}`);
-    process.processer(code, process.name);
+    await process.processer(code, process.name);
   }
 
   console.info("Gracefull shutdown complete!");

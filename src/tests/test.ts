@@ -3,8 +3,8 @@ init({
   watchedEvents: ["exit"],
 });
 
-runAtShutdown("test", () => {
-  console.info("This would be run at shutdown before we are done...");
+runAtShutdown("test", async () => {
+  await new Promise<void>((resolve) => {
+    setTimeout(resolve, 5000);
+  });
 });
-
-console.info("Test exit");
